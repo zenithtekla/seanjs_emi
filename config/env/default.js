@@ -1,6 +1,9 @@
 'use strict';
 
+process.env.RECAPTCHA_SECRET = 'Helsinki';
+
 module.exports = {
+
   app: {
     title: 'SEAN.JS',
     description: 'Full-Stack Javascript with SequelizeJS, ExpressJS, AngularJS, and Node.js',

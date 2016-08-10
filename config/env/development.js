@@ -2,6 +2,11 @@
 
 var defaultEnvConfig = require('./default');
 
+process.env.DB_NAME = 'seanjs';
+process.env.DB_PORT = 3306;
+process.env.DB_USERNAME = 'root';
+process.env.DB_PASSWORD = 'KTMEi';
+
 module.exports = {
   secure: {
     ssl: Boolean(process.env.ssl) || false,
@@ -14,10 +19,10 @@ module.exports = {
     port: process.env.DB_PORT || 5432,
     username: process.env.DB_USERNAME || "postgres",
     password: process.env.DB_PASSWORD || "postgres",
-    dialect: process.env.DB_DIALECT || "postgres", //mysql, postgres, sqlite3,...
-    enableSequelizeLog: process.env.DB_LOG || false,
+    dialect: "mysql", //mysql, postgres, sqlite3,...
+    enableSequelizeLog: true,
     ssl: process.env.DB_SSL || false,
-    sync: process.env.DB_SYNC || true //Synchronizing any model changes with database
+    sync: true //Synchronizing any model changes with database
   },
   redis: {
     host: process.env.REDIS_HOST || "localhost",

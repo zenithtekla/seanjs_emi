@@ -103,7 +103,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     profileImageURL: DataTypes.STRING,
     roles: {
-      type: DataTypes.JSON,
+      type: DataTypes.STRING,
       defaultValue: ["user"],
       isArray: true
     },
@@ -116,10 +116,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     provider: DataTypes.STRING,
     providerData: {
-      type: DataTypes.JSON
+      type: DataTypes.STRING
     },
     additionalProvidersData: {
-      type: DataTypes.JSON
+      type: DataTypes.STRING
     },
     salt: DataTypes.STRING,
     resetPasswordToken: DataTypes.STRING,
