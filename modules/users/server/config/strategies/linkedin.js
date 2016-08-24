@@ -32,7 +32,7 @@ module.exports = function(config) {
         profileImageURL: (providerData.pictureUrl) ? providerData.pictureUrl : undefined,
         provider: 'linkedin',
         providerIdentifierField: 'id',
-        providerData: providerData
+        providerData: JSON.stringify(providerData)
       };
 
       // Save the user OAuth profile

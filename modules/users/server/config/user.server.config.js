@@ -15,6 +15,7 @@ var
  */
 module.exports = function(app, db) {
 
+  /* Visual Flow http://stackoverflow.com/a/27637668/5828821 */
   // Serialize sessions
   passport.serializeUser(function(user, done) {
     var userData = {

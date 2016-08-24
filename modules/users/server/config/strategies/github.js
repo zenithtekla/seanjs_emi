@@ -38,7 +38,7 @@ module.exports = function(config) {
         // jscs:enable
         provider: 'github',
         providerIdentifierField: 'id',
-        providerData: providerData
+        providerData: JSON.stringify(providerData)
       };
 
       // Save the user OAuth profile

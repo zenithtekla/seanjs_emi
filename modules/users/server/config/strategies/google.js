@@ -31,7 +31,7 @@ module.exports = function(config) {
         profileImageURL: (providerData.picture) ? providerData.picture : undefined,
         provider: 'google',
         providerIdentifierField: 'id',
-        providerData: providerData
+        providerData: JSON.stringify(providerData)
       };
 
       // Save the user OAuth profile

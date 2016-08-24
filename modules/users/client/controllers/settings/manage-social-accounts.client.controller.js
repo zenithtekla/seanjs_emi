@@ -3,7 +3,8 @@
 angular.module('user').controller('SocialAccountsController', ['$scope', '$http', 'Authentication',
   function($scope, $http, Authentication) {
     $scope.user = Authentication.user;
-
+    $scope.user.additionalProvidersData = JSON.parse($scope.user.additionalProvidersData);
+    
     // Check if there are additional accounts
     $scope.hasConnectedAdditionalSocialAccounts = function(provider) {
       for (var i in $scope.user.additionalProvidersData) {

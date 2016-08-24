@@ -33,7 +33,7 @@ exports.update = function(req, res) {
       user.displayName = req.body.firstName + ' ' + req.body.lastName;
       user.username = req.body.username;
       user.email = req.body.email;
-      user.roles = req.body.roles;
+      user.roles = JSON.stringify(req.body.roles);
       user.updatedAt = Date.now();
 
       user.save().then(function() {
@@ -43,6 +43,8 @@ exports.update = function(req, res) {
           message: errorHandler.getErrorMessage(err)
         });
       });
+
+      return null;
 
     } else {
       return res.status(400).send({
@@ -131,13 +133,14 @@ exports.userByID = function(req, res, next, id) {
       data.displayName = user.displayName;
       data.email = user.email;
       data.username = user.username;
-      data.roles = user.roles;
+      data.roles = JSON.parse(user.roles);
       data.provider = user.provider;
       data.updatedAt = user.updatedAt;
       data.createdAt = user.createdAt;
 
       req.model = data;
       next();
+      return;
     }
   }).catch(function(err) {
     return next(err);

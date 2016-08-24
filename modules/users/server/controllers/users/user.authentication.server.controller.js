@@ -41,6 +41,8 @@ exports.signup = function(req, res) {
     user.roles = ["user"];
   }
 
+  user.roles = JSON.stringify(user.roles);
+
   user.save().then(function() {
     req.login(user, function(err) {
       if (err)
@@ -158,7 +160,7 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
         user.additionalProvidersData[providerUserProfile.provider] = providerUserProfile.providerData;
 
         // Notify sequelize for update
-        user.set('additionalProvidersData', user.additionalProvidersData);
+        user.set('additionalProvidersData', JSON.stringify(user.additionalProvidersData));
 
         // And save the user
         user.save().then(function() {
@@ -367,7 +369,7 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
       user.additionalProvidersData[providerUserProfile.provider] = providerUserProfile.providerData;
 
       // Notify sequelize for update
-      user.set('additionalProvidersData', user.additionalProvidersData);
+      user.set('additionalProvidersData', JSON.stringify(user.additionalProvidersData));
 
       // And save the user
       user.save().then(function(saved) {
@@ -388,6 +390,7 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 exports.removeOAuthProvider = function(req, res, next) {
   var user = req.user;
   var provider = req.query.provider;
+  user.additionalProvidersData = JSON.parse(user.additionalProvidersData);
 
   if (!user) {
     return res.status(401).json({
@@ -402,7 +405,7 @@ exports.removeOAuthProvider = function(req, res, next) {
     delete user.additionalProvidersData[provider];
 
     // Notify sequelize for update
-    user.set('additionalProvidersData', user.additionalProvidersData);
+    user.set('additionalProvidersData', JSON.stringify(user.additionalProvidersData));
   }
 
   user.save().then(function(user) {
