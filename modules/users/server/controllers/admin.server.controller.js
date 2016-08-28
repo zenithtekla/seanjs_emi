@@ -140,7 +140,7 @@ exports.userByID = function(req, res, next, id) {
 
       req.model = data;
       next();
-      return;
+      return null;
     }
   }).catch(function(err) {
     return next(err);

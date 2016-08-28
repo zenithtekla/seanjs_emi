@@ -20,7 +20,7 @@ angular.module(ApplicationConfiguration.applicationModuleName).run(function($roo
       var allowed = false;
 
       if (Authentication.user.roles) {
-        Authentication.user.roles = JSON.parse(Authentication.user.roles);
+        Authentication.user.roles = (typeof Authentication.user.roles ==='string') ? JSON.parse(Authentication.user.roles) : Authentication.user.roles;
         toState.data.roles.forEach(function(role) {
           if (Authentication.user.roles !== undefined && Authentication.user.roles.indexOf(role) !== -1) {
             allowed = true;
