@@ -80,6 +80,7 @@ exports.signin = function(req, res, next) {
             message: errorHandler.getErrorMessage(err)
           });
         } else {
+          console.log(user, user.roles);
           res.json(user);
         }
       });

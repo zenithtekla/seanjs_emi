@@ -74,6 +74,8 @@ exports.delete = function(req, res) {
         });
       });
 
+      return null;
+
     } else {
       return res.status(400).send({
         message: 'Unable to find the article'
@@ -133,6 +135,9 @@ exports.articleByID = function(req, res, next, id) {
       req.article = article;
       next();
     }
+
+    return null;
+    
   }).catch(function(err) {
     return next(err);
   });
